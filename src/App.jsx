@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import SearchHistory from "./components/SearchHistory";
@@ -10,6 +10,7 @@ import "./App.css";
 function App() {
   const { data, loading, error, fetchWeather } = useWeather();
   const [history, setHistory] = useState([]);
+  const isFirstRender = useRef(true);
 
   // Load history from localStorage on mount
   useEffect(() => {
@@ -17,8 +18,12 @@ function App() {
     if (saved) setHistory(JSON.parse(saved));
   }, []);
 
-  // Save history whenever it changes
+  // Save history whenever it changes — but skip the very first render
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     localStorage.setItem("searchHistory", JSON.stringify(history));
   }, [history]);
 
