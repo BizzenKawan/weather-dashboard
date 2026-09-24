@@ -2,15 +2,20 @@ function SearchHistory({ history, onSelect }) {
   if (history.length === 0) return null;
 
   return (
-    <div className="search-history">
-      <h3>Recent Searches</h3>
-      <ul>
+    <div className="w-100 bg-white bg-opacity-75 rounded p-3">
+      <h6>Recent Searches</h6>
+      <div className="d-flex flex-wrap gap-2">
         {history.map((city, index) => (
-          <li key={`${city}-${index}`} onClick={() => onSelect(city)}>
+          <span
+            key={`${city}-${index}`}
+            className="badge rounded-pill bg-primary"
+            style={{ cursor: "pointer" }}
+            onClick={() => onSelect(city)}
+          >
             {city}
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

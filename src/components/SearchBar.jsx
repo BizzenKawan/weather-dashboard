@@ -11,14 +11,15 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="search-bar">
+    <form onSubmit={handleSubmit} className="input-group mb-3">
       <input
         type="text"
+        className="form-control"
         value={city}
         onChange={(e) => setCity(e.target.value)}
         placeholder="Enter a city..."
       />
-      <button type="submit">Search</button>
+      <button className="btn btn-primary" type="submit">Search</button>
     </form>
   );
 }

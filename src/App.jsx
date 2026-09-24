@@ -36,21 +36,19 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <header>
-        <h1>Weather Dashboard</h1>
-      </header>
-      <main>
-        <SearchBar onSearch={handleSearch} />
-
-        {loading && <LoadingSpinner />}
-        {error && <ErrorMessage message={error} />}
-        {data && !loading && !error && <WeatherCard data={data} />}
-
-        <SearchHistory history={history} onSelect={handleSearch} />
-      </main>
-    </div>
-  );
+  <div className="app min-vh-100 d-flex flex-column align-items-center py-5 px-3">
+    <header>
+      <h1 className="text-white text-center mb-4">Weather Dashboard</h1>
+    </header>
+    <main className="d-flex flex-column align-items-center gap-3" style={{ width: "100%", maxWidth: "480px" }}>
+      <SearchBar onSearch={handleSearch} />
+      {loading && <LoadingSpinner />}
+      {error && <ErrorMessage message={error} />}
+      {data && !loading && !error && <WeatherCard data={data} />}
+      <SearchHistory history={history} onSelect={handleSearch} />
+    </main>
+  </div>
+);
 }
 
 export default App;
