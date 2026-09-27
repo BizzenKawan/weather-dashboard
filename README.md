@@ -39,7 +39,9 @@ Open the local URL shown in your terminal (usually http://localhost:5173)
 
 Screenshots
 
-(added in the next commit)
+![Weather displayed for a searched city](./Screenshots/WeatherResult.png)
+![Error state for an invalid city](./Screenshots/WeatherUnknownName.png)
+
 
 
 
